@@ -5,12 +5,19 @@ function init() {
 
     getNewQuestion()
 
-
-
-
-
-
+    //getting value from textbox
+     let button = document.querySelector('#gButton');
+     button.addEventListener('click', function() {  
+     let textBox = document.querySelector('input');
+     console.log(textBox.value);
+     textBox.value = '';
+     
+     addScore();
+ 
+     });
 }
+    
+
 
 
 function getNewQuestion() {
@@ -34,9 +41,27 @@ function showQuestion(str) {
     randomQ.textContent = str.question;
     let category = document.querySelector('#cat');
     category.textContent =  str.category.title;
+    let answer = str.answer;
+    console.log(str.answer);
+    let pointValue = str.value;
+    console.log('points:', str.value);
 
 
 
+function addScore() {
+    let score = 0;
+     for (i =0; i < textBox.length; i++) {
+         for ( j = 0; j < answer.length; j++) {
+             if (textBox[i].toLowerCase() === answer[j].toLowerCase()) {
+                 score = score + pointValue;
+                 console.log(score);
+             }
+         }
+
+     }
+     return score;
+}
+     
 
 
 // only need to appendChild when making new element (createElement)
